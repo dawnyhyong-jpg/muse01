@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Straits Muse Hotel · Singapore</title>
+  <meta name="description" content="Straits Muse Hotel — a refined sanctuary in the heart of Singapore, where Straits heritage meets contemporary luxury." />
+  <meta name="theme-color" content="#0d1714" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink: #0d1714;
+      --ink-2: #13211d;
+      --ink-3: #1b2e28;
+      --ivory: #f6f1e7;
+      --ivory-2: #ece4d4;
+      --sand: #d9ccb4;
+      --gold: #b8955a;
+      --gold-soft: #d4b77f;
+      --jade: #2f5d50;
+      --muted: #8c948f;
+      --text-dark: #1e2622;
+      --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+      --sans: "Jost", "Helvetica Neue", Arial, sans-serif;
+      --max: 1240px;
+      --ease: cubic-bezier(.2, .7, .1, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      font-weight: 300;
+      color: var(--text-dark);
+      background: var(--ivory);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; color: inherit; }
+
+    .container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 400;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .eyebrow::before { content: ""; width: 36px; height: 1px; background: currentColor; }
+
+    h1, h2, h3, h4 { font-family: var(--serif); font-weight: 300; line-height: 1.1; letter-spacing: .005em; }
+    h2 { font-size: clamp(38px, 5vw, 64px); }
+    h2 em, h1 em { font-style: italic; color: var(--gold); }
+    h3 { font-size: clamp(26px, 2.6vw, 34px); }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+      padding: 16px 34px;
+      font-size: 12px; letter-spacing: .26em; text-transform: uppercase; font-weight: 400;
+      border: 1px solid var(--gold);
+      background: var(--gold); color: var(--ink);
+      cursor: pointer;
+      transition: background .4s var(--ease), color .4s var(--ease), border-color .4s var(--ease);
+    }
+    .btn:hover { background: transparent; color: var(--gold-soft); }
+    .btn--ghost { background: transparent; color: var(--ivory); border-color: rgba(246,241,231,.45); }
+    .btn--ghost:hover { border-color: var(--gold); color: var(--gold-soft); }
+    .btn--dark { background: var(--ink); border-color: var(--ink); color: var(--ivory); }
+    .btn--dark:hover { background: transparent; color: var(--ink); }
+
+    .link-arrow {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-size: 12px; letter-spacing: .26em; text-transform: uppercase;
+      color: var(--gold); padding-bottom: 6px; border-bottom: 1px solid rgba(184,149,90,.4);
+      transition: gap .4s var(--ease), border-color .4s var(--ease);
+    }
+    .link-arrow:hover { gap: 20px; border-color: var(--gold); }
+
+    /* ---------- Peranakan tile motif (used as texture) ---------- */
+    .tile-bg {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23b8955a' stroke-opacity='.14' stroke-width='1'%3E%3Cpath d='M40 4 L76 40 L40 76 L4 40 Z'/%3E%3Ccircle cx='40' cy='40' r='12'/%3E%3Cpath d='M40 28 Q46 34 40 40 Q34 34 40 28 Z M40 52 Q46 46 40 40 Q34 46 40 52 Z M28 40 Q34 34 40 40 Q34 46 28 40 Z M52 40 Q46 34 40 40 Q46 46 52 40 Z'/%3E%3Cpath d='M0 0 L10 10 M80 0 L70 10 M0 80 L10 70 M80 80 L70 70'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    /* ---------- Header ---------- */
+    .header {
+      position: fixed; inset: 0 0 auto 0; z-index: 50;
+      padding: 26px 0;
+      transition: background .5s var(--ease), padding .5s var(--ease), box-shadow .5s var(--ease);
+    }
+    .header.scrolled {
+      background: rgba(13,23,20,.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: 16px 0;
+      box-shadow: 0 1px 0 rgba(184,149,90,.18);
+    }
+    .header .container { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+
+    .brand { display: flex; align-items: center; gap: 14px; color: var(--ivory); white-space: nowrap; flex: none; }
+    .brand-mark { width: 42px; height: 42px; flex: none; }
+    .brand-text { display: flex; flex-direction: column; line-height: 1; }
+    .brand-name { font-family: var(--serif); font-size: 24px; letter-spacing: .14em; text-transform: uppercase; font-weight: 400; }
+    .brand-sub { font-size: 9px; letter-spacing: .5em; text-transform: uppercase; color: var(--gold-soft); margin-top: 7px; }
+
+    .nav { display: flex; align-items: center; gap: 36px; }
+    .nav a {
+      color: rgba(246,241,231,.82); font-size: 12px; letter-spacing: .2em; text-transform: uppercase; white-space: nowrap;
+      position: relative; padding: 6px 0; transition: color .3s;
+    }
+    .nav a::after {
+      content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 1px; background: var(--gold);
+      transform: scaleX(0); transform-origin: right; transition: transform .45s var(--ease);
+    }
+    .nav a:hover { color: var(--ivory); }
+    .nav a:hover::after { transform: scaleX(1); transform-origin: left; }
+    .header .btn { padding: 13px 26px; white-space: nowrap; }
+
+    .menu-toggle {
+      display: none; background: none; border: 0; cursor: pointer; width: 44px; height: 44px;
+      position: relative; z-index: 60;
+    }
+    .menu-toggle span { position: absolute; left: 10px; right: 10px; height: 1px; background: var(--ivory); transition: transform .4s var(--ease), opacity .3s; }
+    .menu-toggle span:nth-child(1) { top: 16px; }
+    .menu-toggle span:nth-child(2) { top: 22px; }
+    .menu-toggle span:nth-child(3) { top: 28px; }
+    .menu-open .menu-toggle span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .menu-open .menu-toggle span:nth-child(2) { opacity: 0; }
+    .menu-open .menu-toggle span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative; min-height: 100vh; min-height: 100svh;
+      display: flex; align-items: flex-end;
+      color: var(--ivory);
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 60% 45% at 72% 78%, rgba(212,183,127,.38), transparent 70%),
+        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(47,93,80,.55), transparent 70%),
+        linear-gradient(180deg, #0a1311 0%, #13241f 40%, #2b3a33 68%, #6b5a3f 88%, #a98556 100%);
+    }
+    .hero::before {
+      /* stars / city haze */
+      content: ""; position: absolute; inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,.55), transparent),
+        radial-gradient(1px 1px at 34% 8%, rgba(255,255,255,.4), transparent),
+        radial-gradient(1px 1px at 58% 22%, rgba(255,255,255,.5), transparent),
+        radial-gradient(1px 1px at 81% 12%, rgba(255,255,255,.35), transparent),
+        radial-gradient(1px 1px at 91% 30%, rgba(255,255,255,.45), transparent),
+        radial-gradient(1px 1px at 46% 34%, rgba(255,255,255,.3), transparent);
+      opacity: .9;
+    }
+    .hero-skyline { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: auto; pointer-events: none; }
+    .hero-veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,19,17,.35) 0%, rgba(10,19,17,0) 35%, rgba(10,19,17,.15) 60%, rgba(10,19,17,.85) 100%); }
+
+    .hero-content { position: relative; z-index: 2; width: 100%; padding-bottom: 120px; padding-top: 160px; }
+    .hero h1 {
+      font-size: clamp(52px, 9vw, 132px);
+      line-height: .95; margin: 26px 0 30px; max-width: 12ch;
+    }
+    .hero p.lead { max-width: 520px; font-size: 18px; color: rgba(246,241,231,.82); margin-bottom: 44px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; }
+
+    .hero-meta {
+      position: absolute; z-index: 2; right: 32px; bottom: 120px;
+      display: flex; flex-direction: column; gap: 22px; text-align: right;
+      font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: rgba(246,241,231,.7);
+    }
+    .hero-meta strong { display: block; font-family: var(--serif); font-size: 30px; letter-spacing: .04em; text-transform: none; font-weight: 300; color: var(--gold-soft); }
+
+    .scroll-cue {
+      position: absolute; left: 50%; bottom: 34px; z-index: 2; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      font-size: 10px; letter-spacing: .4em; text-transform: uppercase; color: rgba(246,241,231,.6);
+    }
+    .scroll-cue i { width: 1px; height: 46px; background: linear-gradient(var(--gold), transparent); animation: cue 2.4s var(--ease) infinite; transform-origin: top; }
+    @keyframes cue { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
+
+    /* ---------- Booking bar ---------- */
+    .booking {
+      position: relative; z-index: 5; margin-top: -58px;
+    }
+    .booking-form {
+      background: var(--ivory); box-shadow: 0 30px 60px -30px rgba(13,23,20,.45);
+      display: grid; grid-template-columns: repeat(4, 1fr) auto; align-items: stretch;
+      border-top: 2px solid var(--gold);
+    }
+    .field { padding: 22px 28px; border-right: 1px solid var(--ivory-2); display: flex; flex-direction: column; gap: 6px; }
+    .field label { font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); }
+    .field input, .field select {
+      border: 0; background: transparent; outline: none; font-family: var(--serif); font-size: 22px; color: var(--text-dark);
+      width: 100%; cursor: pointer; appearance: none; -webkit-appearance: none;
+    }
+    .booking-form .btn { height: 100%; padding: 0 44px; border: 0; }
+    .booking-form .btn:hover { background: var(--ink); color: var(--gold-soft); }
+    .booking-note { font-size: 13px; color: var(--muted); padding: 14px 4px 0; min-height: 36px; }
+    .booking-note.success { color: var(--jade); }
+
+    /* ---------- Sections ---------- */
+    section { position: relative; }
+    .section { padding: 140px 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; margin-bottom: 70px; flex-wrap: wrap; }
+    .section-head h2 { margin-top: 20px; max-width: 16ch; }
+    .section-head p { max-width: 420px; color: #56605b; }
+
+    /* Intro */
+    .intro { display: grid; grid-template-columns: 1.05fr 1fr; gap: 90px; align-items: center; }
+    .intro h2 { margin: 22px 0 30px; }
+    .intro p { color: #4b544f; margin-bottom: 20px; max-width: 520px; }
+    .intro .signature { font-family: var(--serif); font-style: italic; font-size: 26px; color: var(--jade); margin: 34px 0 6px; }
+    .intro .signature-role { font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); }
+
+    .intro-visual { position: relative; aspect-ratio: 4 / 5; }
+    .intro-visual .panel { position: absolute; overflow: hidden; }
+    .intro-visual .panel--a { inset: 0 18% 14% 0; }
+    .intro-visual .panel--b { width: 48%; aspect-ratio: 3 / 4; right: 0; bottom: 0; border: 10px solid var(--ivory); }
+    .intro-badge {
+      position: absolute; top: 8%; right: 4%; width: 132px; height: 132px; border-radius: 50%;
+      background: var(--ink); color: var(--ivory); display: grid; place-items: center; text-align: center;
+      font-size: 10px; letter-spacing: .3em; text-transform: uppercase; line-height: 1.6;
+      box-shadow: 0 20px 40px -20px rgba(0,0,0,.5);
+    }
+    .intro-badge strong { display: block; font-family: var(--serif); font-size: 38px; font-weight: 300; letter-spacing: 0; color: var(--gold-soft); line-height: 1; }
+
+    /* Art panels (photo-ready placeholders). Replace background with url('your-image.jpg') center/cover */
+    .art { width: 100%; height: 100%; position: relative; transition: transform 1.2s var(--ease); }
+    .art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(10,19,17,.35)); }
+    .art--lobby {
+      background:
+        radial-gradient(circle at 50% 18%, rgba(255,228,170,.55), transparent 30%),
+        repeating-linear-gradient(90deg, rgba(0,0,0,.0) 0 58px, rgba(0,0,0,.18) 58px 60px),
+        linear-gradient(180deg, #3e3222 0%, #6d5536 45%, #1f2a24 100%);
+    }
+    .art--arch {
+      background:
+        radial-gradient(ellipse 38% 55% at 50% 100%, rgba(246,241,231,.0) 98%, transparent),
+        radial-gradient(circle at 50% 65%, rgba(212,183,127,.6), transparent 45%),
+        linear-gradient(180deg, #1b2e28, #2f5d50);
+    }
+    .art--arch::before {
+      content: ""; position: absolute; left: 22%; right: 22%; top: 18%; bottom: 0;
+      border-radius: 999px 999px 0 0; border: 1px solid rgba(212,183,127,.6);
+      background: linear-gradient(180deg, rgba(246,241,231,.08), rgba(246,241,231,0));
+    }
+
+    /* Rooms */
+    .rooms { background: var(--ink); color: var(--ivory); }
+    .rooms .section-head p { color: rgba(246,241,231,.66); }
+    .room-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+    .room { display: flex; flex-direction: column; }
+    .room-media { aspect-ratio: 4 / 5; overflow: hidden; position: relative; }
+    .room:hover .art { transform: scale(1.05); }
+    .room-tag {
+      position: absolute; z-index: 2; top: 20px; left: 20px; padding: 7px 14px;
+      font-size: 10px; letter-spacing: .28em; text-transform: uppercase; background: rgba(13,23,20,.7); color: var(--gold-soft);
+      backdrop-filter: blur(6px);
+    }
+    .room-body { padding: 30px 0 0; flex: 1; display: flex; flex-direction: column; }
+    .room-body h3 { margin-bottom: 12px; }
+    .room-body p { color: rgba(246,241,231,.68); font-size: 15px; margin-bottom: 22px; }
+    .room-specs { display: flex; gap: 22px; flex-wrap: wrap; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: rgba(246,241,231,.55); padding: 18px 0; border-top: 1px solid rgba(184,149,90,.25); margin-top: auto; }
+    .room-foot { display: flex; justify-content: space-between; align-items: center; padding-top: 6px; }
+    .room-price { font-family: var(--serif); font-size: 18px; color: rgba(246,241,231,.75); }
+    .room-price strong { font-size: 30px; font-weight: 400; color: var(--gold-soft); }
+
+    .art--room1 {
+      background:
+        linear-gradient(180deg, transparent 0 74%, #16241f 74% 76%, #e9dfcc 76% 84%, #1a2a25 84%),
+        radial-gradient(ellipse 40% 50% at 50% 42%, rgba(255,222,160,.45), transparent 70%),
+        linear-gradient(180deg, #2a473e 0%, #1f3630 100%);
+    }
+    .art--room1::before {
+      content: ""; position: absolute; left: 30%; right: 30%; top: 14%; height: 52%;
+      border-radius: 999px 999px 0 0; border: 1px solid rgba(212,183,127,.55);
+      background: linear-gradient(180deg, #1b2c3a 0%, #45586a 55%, #b08d5c 100%);
+    }
+    .art--room2 {
+      background:
+        linear-gradient(90deg, transparent 0 62%, rgba(212,183,127,.25) 62% 63%, transparent 63%),
+        radial-gradient(circle at 80% 30%, rgba(255,214,150,.5), transparent 28%),
+        linear-gradient(180deg, #0f1c2a 0%, #243c53 38%, #7a6a55 70%, #3b3024 100%);
+    }
+    .art--room3 {
+      background:
+        radial-gradient(circle at 30% 25%, rgba(212,183,127,.45), transparent 30%),
+        linear-gradient(135deg, transparent 0 48%, rgba(184,149,90,.35) 48% 48.6%, transparent 48.6%),
+        linear-gradient(180deg, #3d2f22 0%, #5b4632 50%, #1f1a14 100%);
+    }
+
+    /* Dining */
+    .dining-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; min-height: 640px; }
+    .dining-visual { position: relative; overflow: hidden; }
+    .art--dining {
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,210,140,.55), transparent 18%),
+        radial-gradient(circle at 70% 26%, rgba(255,210,140,.45), transparent 16%),
+        radial-gradient(ellipse 80% 22% at 50% 88%, rgba(246,241,231,.18), transparent 70%),
+        linear-gradient(180deg, #1a120b 0%, #3a2616 60%, #120d09 100%);
+    }
+    .dining-copy { background: var(--ivory-2); padding: 100px 90px; display: flex; flex-direction: column; justify-content: center; }
+    .dining-copy h2 { margin: 22px 0 26px; }
+    .dining-copy p { color: #4b544f; margin-bottom: 36px; max-width: 480px; }
+    .venues { display: grid; gap: 0; margin-bottom: 40px; }
+    .venue { display: grid; grid-template-columns: 1fr auto; gap: 16px; padding: 20px 0; border-bottom: 1px solid rgba(30,38,34,.12); align-items: baseline; }
+    .venue:first-child { border-top: 1px solid rgba(30,38,34,.12); }
+    .venue h4 { font-size: 26px; font-weight: 400; }
+    .venue span { font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--muted); }
+    .venue small { grid-column: 1 / -1; color: #5d6661; font-size: 14px; margin-top: -4px; }
+
+    /* Experiences */
+    .experiences { background: var(--ink-2); color: var(--ivory); overflow: hidden; }
+    .exp-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(184,149,90,.25); }
+    .exp {
+      padding: 50px 34px 56px; border-right: 1px solid rgba(184,149,90,.18); position: relative;
+      transition: background .5s var(--ease);
+    }
+    .exp:last-child { border-right: 0; }
+    .exp:hover { background: rgba(184,149,90,.07); }
+    .exp-num { font-family: var(--serif); font-size: 15px; color: var(--gold); letter-spacing: .1em; }
+    .exp-icon { width: 46px; height: 46px; margin: 34px 0 30px; color: var(--gold-soft); }
+    .exp h3 { font-size: 28px; margin-bottom: 14px; }
+    .exp p { color: rgba(246,241,231,.62); font-size: 15px; }
+
+    /* Neighbourhood / quote */
+    .quote-band { padding: 150px 0; text-align: center; background: var(--ivory); }
+    .quote-band blockquote {
+      font-family: var(--serif); font-weight: 300; font-style: italic;
+      font-size: clamp(30px, 4vw, 52px); line-height: 1.25; max-width: 980px; margin: 30px auto 34px; color: var(--ink);
+    }
+    .quote-band cite { font-style: normal; font-size: 11px; letter-spacing: .34em; text-transform: uppercase; color: var(--muted); }
+    .ornament { width: 90px; margin: 0 auto; color: var(--gold); }
+
+    .location { display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; align-items: center; }
+    .location h2 { margin: 22px 0 26px; }
+    .location p { color: #4b544f; margin-bottom: 30px; max-width: 500px; }
+    .distances { list-style: none; display: grid; gap: 0; }
+    .distances li { display: flex; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid rgba(30,38,34,.12); font-size: 15px; }
+    .distances li span:last-child { font-family: var(--serif); font-size: 20px; color: var(--jade); }
+    .map-card { position: relative; aspect-ratio: 5 / 4; background: var(--ink); overflow: hidden; }
+    .map-card svg { width: 100%; height: 100%; }
+    .map-label {
+      position: absolute; left: 28px; bottom: 28px; right: 28px; display: flex; justify-content: space-between; align-items: flex-end; gap: 20px;
+      color: var(--ivory); font-size: 11px; letter-spacing: .26em; text-transform: uppercase;
+    }
+    .map-label strong { display: block; font-family: var(--serif); font-size: 26px; font-weight: 300; letter-spacing: .02em; text-transform: none; color: var(--gold-soft); margin-bottom: 4px; }
+
+    /* Offers */
+    .offers { background: var(--ivory-2); }
+    .offer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+    .offer {
+      background: var(--ivory); padding: 46px 40px; border: 1px solid rgba(184,149,90,.25); position: relative;
+      display: flex; flex-direction: column; min-height: 360px;
+      transition: transform .5s var(--ease), box-shadow .5s var(--ease);
+    }
+    .offer:hover { transform: translateY(-6px); box-shadow: 0 30px 50px -30px rgba(13,23,20,.35); }
+    .offer .eyebrow { font-size: 10px; }
+    .offer h3 { margin: 22px 0 16px; }
+    .offer p { color: #56605b; font-size: 15px; margin-bottom: 30px; }
+    .offer .link-arrow { margin-top: auto; align-self: flex-start; }
+
+    /* Concierge CTA */
+    .concierge {
+      background: var(--ink); color: var(--ivory); padding: 130px 0; text-align: center; overflow: hidden;
+    }
+    .concierge h2 { margin: 24px auto 24px; max-width: 18ch; }
+    .concierge p { max-width: 560px; margin: 0 auto 44px; color: rgba(246,241,231,.7); }
+    .concierge-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .pulse { display: inline-flex; align-items: center; gap: 12px; font-size: 12px; letter-spacing: .26em; text-transform: uppercase; color: var(--gold-soft); margin-top: 40px; }
+    .pulse i { width: 8px; height: 8px; border-radius: 50%; background: #6fcf97; box-shadow: 0 0 0 0 rgba(111,207,151,.6); animation: pulse 2s infinite; }
+    @keyframes pulse { 70% { box-shadow: 0 0 0 12px rgba(111,207,151,0); } 100% { box-shadow: 0 0 0 0 rgba(111,207,151,0); } }
+
+    /* Footer */
+    .footer { background: #08100e; color: rgba(246,241,231,.7); padding: 100px 0 40px; font-size: 14px; }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 60px; padding-bottom: 70px; border-bottom: 1px solid rgba(184,149,90,.18); }
+    .footer h5 { font-family: var(--sans); font-weight: 400; font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+    .footer ul { list-style: none; display: grid; gap: 12px; }
+    .footer a:hover { color: var(--gold-soft); }
+    .footer .brand { margin-bottom: 26px; }
+    .footer-about { max-width: 320px; }
+    .newsletter { display: flex; border-bottom: 1px solid rgba(246,241,231,.3); margin-top: 8px; }
+    .newsletter input { flex: 1; background: transparent; border: 0; outline: none; padding: 12px 0; color: var(--ivory); }
+    .newsletter input::placeholder { color: rgba(246,241,231,.4); }
+    .newsletter button { background: none; border: 0; color: var(--gold); cursor: pointer; font-size: 11px; letter-spacing: .26em; text-transform: uppercase; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding-top: 34px; font-size: 12px; letter-spacing: .06em; color: rgba(246,241,231,.45);
+      /* keep clear of the ElevenLabs widget in the bottom-right corner */
+      padding-right: 120px; }
+    .socials { display: flex; gap: 18px; }
+    .socials a { width: 38px; height: 38px; border: 1px solid rgba(246,241,231,.2); border-radius: 50%; display: grid; place-items: center; transition: border-color .3s, color .3s; }
+    .socials a:hover { border-color: var(--gold); }
+    .socials svg { width: 15px; height: 15px; }
+
+    /* Reveal animation */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1.1s var(--ease), transform 1.1s var(--ease); }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal.d1 { transition-delay: .12s; } .reveal.d2 { transition-delay: .24s; } .reveal.d3 { transition-delay: .36s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .scroll-cue i, .pulse i { animation: none; }
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 1280px) {
+      .nav { gap: 22px; }
+      .nav a { font-size: 11px; letter-spacing: .16em; }
+    }
+
+    @media (max-width: 1100px) {
+      .intro, .location { gap: 60px; }
+      .dining-copy { padding: 80px 56px; }
+      .exp-grid { grid-template-columns: repeat(2, 1fr); }
+      .exp:nth-child(2) { border-right: 0; }
+      .exp:nth-child(-n+2) { border-bottom: 1px solid rgba(184,149,90,.18); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 1024px) {
+      .menu-toggle { display: block; }
+      .header .btn--book { display: none; }
+      .nav {
+        position: fixed; inset: 0; background: var(--ink); flex-direction: column; justify-content: center; gap: 30px;
+        opacity: 0; pointer-events: none; transition: opacity .5s var(--ease);
+      }
+      .nav a { font-family: var(--serif); font-size: 34px; letter-spacing: .04em; text-transform: none; }
+      .menu-open .nav { opacity: 1; pointer-events: auto; }
+    }
+
+    @media (max-width: 900px) {
+      .container { padding: 0 22px; }
+      .hero-meta, .scroll-cue { display: none; }
+      .booking { margin-top: -40px; }
+      .booking-form { grid-template-columns: 1fr 1fr; }
+      .field { border-bottom: 1px solid var(--ivory-2); }
+      .booking-form .btn { grid-column: 1 / -1; padding: 22px; }
+      .section { padding: 100px 0; }
+      .intro, .location, .dining-grid { grid-template-columns: 1fr; }
+      .intro-visual { max-width: 520px; }
+      .dining-visual { min-height: 380px; }
+      .dining-copy { padding: 70px 22px; }
+      .room-grid, .offer-grid { grid-template-columns: 1fr; gap: 60px; }
+      .offer-grid { gap: 24px; }
+      .room-media { aspect-ratio: 4 / 3; }
+    }
+
+    @media (max-width: 560px) {
+      .brand-name { font-size: 19px; }
+      .brand-mark { width: 36px; height: 36px; }
+      .hero-content { padding-bottom: 110px; }
+      .hero p.lead { font-size: 16px; }
+      .booking-form { grid-template-columns: 1fr; }
+      .field { border-right: 0; }
+      .exp-grid { grid-template-columns: 1fr; }
+      .exp { border-right: 0; border-bottom: 1px solid rgba(184,149,90,.18); }
+      .footer-grid { grid-template-columns: 1fr; gap: 44px; }
+      .footer-bottom { padding-right: 0; padding-bottom: 90px; }
+      .intro-badge { width: 110px; height: 110px; }
+      .intro-badge strong { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header" id="header">
+    <div class="container">
+      <a href="#top" class="brand" aria-label="Straits Muse Hotel — home">
+        <svg class="brand-mark" viewBox="0 0 48 48" fill="none" stroke="#b8955a" stroke-width="1.2" aria-hidden="true">
+          <path d="M24 2 L46 24 L24 46 L2 24 Z" />
+          <path d="M24 9 L39 24 L24 39 L9 24 Z" stroke-opacity=".55" />
+          <path d="M16 30 C16 22 20 16 24 14 C28 16 32 22 32 30" />
+          <path d="M19 30 L19 25 M24 30 L24 21 M29 30 L29 25" />
+          <path d="M14 30 H34" />
+        </svg>
+        <span class="brand-text">
+          <span class="brand-name">Straits Muse</span>
+          <span class="brand-sub">Hotel · Singapore</span>
+        </span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Main">
+        <a href="#story">Our Story</a>
+        <a href="#rooms">Rooms &amp; Suites</a>
+        <a href="#dining">Dining</a>
+        <a href="#experiences">Experiences</a>
+        <a href="#location">Location</a>
+        <a href="#offers">Offers</a>
+      </nav>
+
+      <a href="#reserve" class="btn btn--book">Reserve</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <!-- Stylised Singapore waterfront skyline -->
+      <svg class="hero-skyline" viewBox="0 0 1600 520" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="sky-fade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#0c1714" stop-opacity=".55" />
+            <stop offset="1" stop-color="#0a1311" />
+          </linearGradient>
+          <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1a2a25" />
+            <stop offset="1" stop-color="#0a1311" />
+          </linearGradient>
+        </defs>
+        <!-- far towers -->
+        <g fill="#1c2c27" opacity=".75">
+          <rect x="40" y="250" width="44" height="190" /><rect x="96" y="210" width="36" height="230" />
+          <rect x="140" y="270" width="54" height="170" /><rect x="520" y="200" width="40" height="240" />
+          <rect x="570" y="160" width="34" height="280" /><rect x="612" y="230" width="46" height="210" />
+          <rect x="1020" y="190" width="42" height="250" /><rect x="1070" y="150" width="38" height="290" />
+          <rect x="1116" y="220" width="50" height="220" /><rect x="1420" y="230" width="48" height="210" />
+          <rect x="1478" y="190" width="40" height="250" /><rect x="1526" y="260" width="60" height="180" />
+        </g>
+        <!-- mid towers -->
+        <g fill="#132320">
+          <rect x="210" y="180" width="58" height="260" /><rect x="276" y="130" width="48" height="310" />
+          <path d="M332 440 V150 L360 120 L388 150 V440 Z" /><rect x="396" y="210" width="60" height="230" />
+          <rect x="680" y="240" width="40" height="200" />
+          <rect x="1180" y="170" width="56" height="270" /><path d="M1244 440 V120 L1266 96 L1288 120 V440 Z" />
+          <rect x="1296" y="200" width="54" height="240" /><rect x="1358" y="250" width="50" height="190" />
+        </g>
+        <!-- three towers joined by a sky park (iconic waterfront silhouette) -->
+        <g fill="#0f1c19">
+          <path d="M760 440 L772 230 L806 230 L814 440 Z" />
+          <path d="M850 440 L862 230 L896 230 L904 440 Z" />
+          <path d="M940 440 L952 230 L986 230 L994 440 Z" />
+          <path d="M744 222 Q870 206 1012 214 L1012 232 L744 232 Z" />
+        </g>
+        <!-- lit windows -->
+        <g fill="#d4b77f" opacity=".55">
+          <rect x="284" y="160" width="3" height="3" /><rect x="296" y="190" width="3" height="3" /><rect x="306" y="240" width="3" height="3" />
+          <rect x="222" y="220" width="3" height="3" /><rect x="244" y="270" width="3" height="3" /><rect x="410" y="250" width="3" height="3" />
+          <rect x="1192" y="200" width="3" height="3" /><rect x="1210" y="260" width="3" height="3" /><rect x="1310" y="230" width="3" height="3" />
+          <rect x="1326" y="290" width="3" height="3" /><rect x="784" y="280" width="3" height="3" /><rect x="874" y="320" width="3" height="3" />
+          <rect x="962" y="260" width="3" height="3" /><rect x="1260" y="160" width="3" height="3" /><rect x="350" y="180" width="3" height="3" />
+        </g>
+        <!-- lotus-shaped museum on the waterfront -->
+        <g fill="#0f1c19">
+          <path d="M1060 440 C1070 400 1090 380 1104 372 C1100 396 1100 420 1104 440 Z" />
+          <path d="M1104 440 C1108 404 1122 378 1140 366 C1140 392 1136 420 1132 440 Z" />
+          <path d="M1132 440 C1142 408 1160 388 1180 380 C1172 402 1164 424 1158 440 Z" />
+        </g>
+        <!-- waterline -->
+        <rect x="0" y="438" width="1600" height="82" fill="url(#water)" />
+        <g stroke="#d4b77f" stroke-opacity=".35" stroke-width="1">
+          <line x1="770" y1="452" x2="820" y2="452" /><line x1="860" y1="462" x2="900" y2="462" />
+          <line x1="280" y1="458" x2="320" y2="458" /><line x1="1200" y1="456" x2="1250" y2="456" />
+          <line x1="560" y1="470" x2="590" y2="470" /><line x1="1080" y1="474" x2="1120" y2="474" />
+        </g>
+      </svg>
+      <div class="hero-veil"></div>
+
+      <div class="container hero-content">
+        <span class="eyebrow reveal">A Singapore Sanctuary</span>
+        <h1 class="reveal d1">Where the Straits <em>inspire</em></h1>
+        <p class="lead reveal d2">Heritage-inspired interiors, intuitive service and quiet luxury, a short walk from Singapore's waterfront.</p>
+        <div class="hero-actions reveal d3">
+          <a href="#reserve" class="btn">Reserve Your Stay</a>
+          <a href="#rooms" class="btn btn--ghost">Explore Suites</a>
+        </div>
+      </div>
+
+      <div class="hero-meta" aria-hidden="true">
+        <div><strong>1°17′ N</strong>Latitude</div>
+        <div><strong>103°51′ E</strong>Longitude</div>
+      </div>
+
+      <div class="scroll-cue" aria-hidden="true">Scroll<i></i></div>
+    </section>
+
+    <!-- ================= BOOKING BAR ================= -->
+    <div class="booking" id="reserve">
+      <div class="container">
+        <form class="booking-form" id="bookingForm" novalidate>
+          <div class="field">
+            <label for="checkin">Arrival</label>
+            <input type="date" id="checkin" name="checkin" required />
+          </div>
+          <div class="field">
+            <label for="checkout">Departure</label>
+            <input type="date" id="checkout" name="checkout" required />
+          </div>
+          <div class="field">
+            <label for="guests">Guests</label>
+            <select id="guests" name="guests">
+              <option>1 Adult</option>
+              <option selected>2 Adults</option>
+              <option>2 Adults, 1 Child</option>
+              <option>2 Adults, 2 Children</option>
+              <option>3 Adults</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="roomType">Accommodation</label>
+            <select id="roomType" name="roomType">
+              <option>Muse Deluxe Room</option>
+              <option>Marina Horizon Suite</option>
+              <option>Straits Heritage Suite</option>
+            </select>
+          </div>
+          <button type="submit" class="btn">Check Availability</button>
+        </form>
+        <p class="booking-note" id="bookingNote" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+
+    <!-- ================= STORY ================= -->
+    <section class="section" id="story">
+      <div class="container intro">
+        <div>
+          <span class="eyebrow reveal">Our Story</span>
+          <h2 class="reveal d1">A muse for the <em>modern</em> traveller</h2>
+          <p class="reveal d2">Inspired by the merchants, artisans and storytellers who once gathered along the Straits, our hotel is a love letter to Singapore — its craftsmanship, its flavours and its effortless blend of cultures.</p>
+          <p class="reveal d2">Every detail is considered, from hand-finished Peranakan-inspired tiles and rich teak to a personal concierge who remembers exactly how you take your kopi.</p>
+          <p class="signature reveal d3">With warm regards,</p>
+          <p class="signature-role reveal d3">The Straits Muse Family</p>
+        </div>
+
+        <div class="intro-visual reveal d1">
+          <div class="panel panel--a"><div class="art art--lobby" role="img" aria-label="The hotel lobby at dusk"></div></div>
+          <div class="panel panel--b"><div class="art art--arch" role="img" aria-label="An arched heritage doorway"></div></div>
+          <div class="intro-badge"><div><strong>24/7</strong>Personal<br />Concierge</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ROOMS ================= -->
+    <section class="section rooms tile-bg" id="rooms">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow reveal">Rooms &amp; Suites</span>
+            <h2 class="reveal d1">Rest, <em>reimagined</em></h2>
+          </div>
+          <p class="reveal d2">Each room is a quiet retreat — layered textiles, bespoke furnishings and floor-to-ceiling views over the city.</p>
+        </div>
+
+        <div class="room-grid">
+          <article class="room reveal">
+            <div class="room-media">
+              <span class="room-tag">City View</span>
+              <div class="art art--room1" role="img" aria-label="Muse Deluxe Room"></div>
+            </div>
+            <div class="room-body">
+              <h3>Muse Deluxe Room</h3>
+              <p>A serene space dressed in jade and ivory, with a rain shower, curated minibar and plush king bed.</p>
+              <div class="room-specs"><span>38 m²</span><span>King Bed</span><span>2 Guests</span></div>
+              <div class="room-foot">
+                <span class="room-price">from <strong>S$480</strong> / night</span>
+                <a href="#reserve" class="link-arrow" data-room="Muse Deluxe Room">Book →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="room reveal d1">
+            <div class="room-media">
+              <span class="room-tag">Waterfront View</span>
+              <div class="art art--room2" role="img" aria-label="Marina Horizon Suite"></div>
+            </div>
+            <div class="room-body">
+              <h3>Marina Horizon Suite</h3>
+              <p>A separate living salon framing the skyline, deep soaking tub and evening turndown rituals.</p>
+              <div class="room-specs"><span>72 m²</span><span>King Bed</span><span>3 Guests</span></div>
+              <div class="room-foot">
+                <span class="room-price">from <strong>S$920</strong> / night</span>
+                <a href="#reserve" class="link-arrow" data-room="Marina Horizon Suite">Book →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="room reveal d2">
+            <div class="room-media">
+              <span class="room-tag">Signature</span>
+              <div class="art art--room3" role="img" aria-label="Straits Heritage Suite"></div>
+            </div>
+            <div class="room-body">
+              <h3>Straits Heritage Suite</h3>
+              <p>Our most storied residence, with private dining, butler service and heirloom-inspired furnishings.</p>
+              <div class="room-specs"><span>140 m²</span><span>Butler</span><span>4 Guests</span></div>
+              <div class="room-foot">
+                <span class="room-price">from <strong>S$2,400</strong> / night</span>
+                <a href="#reserve" class="link-arrow" data-room="Straits Heritage Suite">Book →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DINING ================= -->
+    <section id="dining">
+      <div class="dining-grid">
+        <div class="dining-visual reveal"><div class="art art--dining" role="img" aria-label="Candlelit dining room"></div></div>
+        <div class="dining-copy">
+          <span class="eyebrow reveal">Dining</span>
+          <h2 class="reveal d1">Flavours of the <em>Straits</em></h2>
+          <p class="reveal d2">From Nyonya family recipes to modern tasting menus, our kitchens celebrate the island's remarkable culinary heritage.</p>
+          <div class="venues reveal d2">
+            <div class="venue"><h4>Muse Dining Room</h4><span>Modern Peranakan</span><small>Seasonal tasting menus, dinner nightly.</small></div>
+            <div class="venue"><h4>The Tiffin Lounge</h4><span>Afternoon Tea</span><small>Kaya, kueh and fine teas, served 2pm – 5pm.</small></div>
+            <div class="venue"><h4>Salt &amp; Spice Bar</h4><span>Cocktails</span><small>Botanical cocktails inspired by the spice trade.</small></div>
+          </div>
+          <a href="#concierge" class="link-arrow reveal d3">Reserve a Table →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= EXPERIENCES ================= -->
+    <section class="section experiences" id="experiences">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow reveal">Experiences</span>
+            <h2 class="reveal d1">Moments worth <em>keeping</em></h2>
+          </div>
+          <p class="reveal d2" style="color:rgba(246,241,231,.66)">Curated by our concierge team to reveal the Singapore that locals love.</p>
+        </div>
+
+        <div class="exp-grid">
+          <div class="exp reveal">
+            <span class="exp-num">01</span>
+            <svg class="exp-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+              <path d="M24 6c6 8 10 14 10 20a10 10 0 0 1-20 0c0-6 4-12 10-20Z" /><path d="M24 22v20M18 36h12" />
+            </svg>
+            <h3>Muse Spa</h3>
+            <p>Restorative rituals drawing on Southeast Asian botanicals, with a rooftop infinity pool above the city.</p>
+          </div>
+          <div class="exp reveal d1">
+            <span class="exp-num">02</span>
+            <svg class="exp-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+              <path d="M6 34h36M10 34c2-6 6-10 14-10s12 4 14 10" /><path d="M24 24V8l10 6-10 4" />
+            </svg>
+            <h3>Twilight River Cruise</h3>
+            <p>A private bumboat journey past historic quays as the skyline lights up at dusk.</p>
+          </div>
+          <div class="exp reveal d2">
+            <span class="exp-num">03</span>
+            <svg class="exp-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+              <path d="M8 40V18l16-10 16 10v22" /><path d="M18 40V28h12v12M8 18h32" />
+            </svg>
+            <h3>Heritage Walks</h3>
+            <p>Guided strolls through shophouse streets, temples and hidden kopitiams with local storytellers.</p>
+          </div>
+          <div class="exp reveal d3">
+            <span class="exp-num">04</span>
+            <svg class="exp-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+              <circle cx="24" cy="26" r="14" /><path d="M24 12V6M18 6h12M24 26l6-6" />
+            </svg>
+            <h3>Hawker Masterclass</h3>
+            <p>Cook laksa and chilli crab alongside our chefs, then dine together at the chef's table.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= QUOTE ================= -->
+    <section class="quote-band">
+      <div class="container">
+        <svg class="ornament reveal" viewBox="0 0 90 20" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+          <path d="M0 10h32M58 10h32" /><path d="M45 2l8 8-8 8-8-8z" /><circle cx="45" cy="10" r="2" fill="currentColor" />
+        </svg>
+        <blockquote class="reveal d1">“Luxury is not what you add, but how gracefully every moment unfolds.”</blockquote>
+        <cite class="reveal d2">— The Straits Muse Philosophy</cite>
+      </div>
+    </section>
+
+    <!-- ================= LOCATION ================= -->
+    <section class="section" id="location" style="padding-top:0">
+      <div class="container location">
+        <div>
+          <span class="eyebrow reveal">Location</span>
+          <h2 class="reveal d1">In the heart of the <em>Lion City</em></h2>
+          <p class="reveal d2">Close to Singapore's waterfront, the Civic District and the city's finest dining and shopping — with Changi Airport a comfortable drive away.</p>
+          <ul class="distances reveal d3">
+            <li><span>Marina Bay waterfront</span><span>~10 min</span></li>
+            <li><span>Civic District &amp; museums</span><span>~10 min</span></li>
+            <li><span>Orchard Road</span><span>~15 min</span></li>
+            <li><span>Changi Airport</span><span>~25 min</span></li>
+          </ul>
+        </div>
+        <div class="map-card reveal d1">
+          <svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect width="500" height="400" fill="#0f1c19" />
+            <g stroke="#b8955a" stroke-opacity=".12">
+              <path d="M0 40h500M0 80h500M0 120h500M0 160h500M0 200h500M0 240h500M0 280h500M0 320h500M0 360h500" />
+              <path d="M40 0v400M80 0v400M120 0v400M160 0v400M200 0v400M240 0v400M280 0v400M320 0v400M360 0v400M400 0v400M440 0v400" />
+            </g>
+            <!-- stylised coastline & river -->
+            <path d="M0 300 C80 290 140 320 210 310 C280 300 320 330 380 318 C430 308 470 322 500 316 V400 H0 Z" fill="#1b2e28" />
+            <path d="M60 120 C120 150 170 170 220 210 C250 234 270 262 300 290" stroke="#2f5d50" stroke-width="10" fill="none" stroke-linecap="round" />
+            <g stroke="rgba(246,241,231,.25)" stroke-width="1.5" fill="none">
+              <path d="M0 200 C120 190 260 170 500 150" /><path d="M180 0 C200 120 230 240 250 400" /><path d="M360 0 C340 130 330 250 340 400" />
+            </g>
+            <!-- pin -->
+            <circle cx="250" cy="215" r="40" fill="#b8955a" fill-opacity=".12" />
+            <circle cx="250" cy="215" r="18" fill="#b8955a" fill-opacity=".25" />
+            <circle cx="250" cy="215" r="6" fill="#d4b77f" />
+          </svg>
+          <div class="map-label">
+            <div><strong>Straits Muse Hotel</strong>Singapore</div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Singapore" target="_blank" rel="noopener" class="link-arrow">Directions →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= OFFERS ================= -->
+    <section class="section offers" id="offers">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow reveal">Offers</span>
+            <h2 class="reveal d1">Considered <em>privileges</em></h2>
+          </div>
+          <p class="reveal d2">Exclusive packages when you book directly with Straits Muse.</p>
+        </div>
+        <div class="offer-grid">
+          <div class="offer reveal">
+            <span class="eyebrow">Stay Longer</span>
+            <h3>The Third Night, On Us</h3>
+            <p>Stay three nights and enjoy the third complimentary, with daily breakfast for two at the Muse Dining Room.</p>
+            <a href="#reserve" class="link-arrow">Discover →</a>
+          </div>
+          <div class="offer reveal d1">
+            <span class="eyebrow">Romance</span>
+            <h3>Straits Serenade</h3>
+            <p>Champagne on arrival, a couples' spa ritual and a private twilight river cruise for two.</p>
+            <a href="#reserve" class="link-arrow">Discover →</a>
+          </div>
+          <div class="offer reveal d2">
+            <span class="eyebrow">Culinary</span>
+            <h3>A Taste of Heritage</h3>
+            <p>A chef-hosted hawker masterclass and a seven-course Peranakan tasting dinner.</p>
+            <a href="#reserve" class="link-arrow">Discover →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONCIERGE CTA ================= -->
+    <section class="concierge tile-bg" id="concierge">
+      <div class="container">
+        <span class="eyebrow reveal">Personal Concierge</span>
+        <h2 class="reveal d1">Speak with us, <em>any hour</em></h2>
+        <p class="reveal d2">Whether it's a reservation, a dinner booking or a special request, our voice concierge is ready to help — simply tap the call button in the corner of your screen.</p>
+        <div class="concierge-actions reveal d3">
+          <a href="tel:+6560000000" class="btn">Call +65 6000 0000</a>
+          <a href="mailto:reservations@straitsmuse.com" class="btn btn--ghost">Email Reservations</a>
+        </div>
+        <div class="pulse reveal d3"><i></i> Voice concierge available 24/7</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="#top" class="brand" aria-label="Straits Muse Hotel">
+            <svg class="brand-mark" viewBox="0 0 48 48" fill="none" stroke="#b8955a" stroke-width="1.2" aria-hidden="true">
+              <path d="M24 2 L46 24 L24 46 L2 24 Z" />
+              <path d="M24 9 L39 24 L24 39 L9 24 Z" stroke-opacity=".55" />
+              <path d="M16 30 C16 22 20 16 24 14 C28 16 32 22 32 30" />
+              <path d="M19 30 L19 25 M24 30 L24 21 M29 30 L29 25" />
+              <path d="M14 30 H34" />
+            </svg>
+            <span class="brand-text">
+              <span class="brand-name">Straits Muse</span>
+              <span class="brand-sub">Hotel · Singapore</span>
+            </span>
+          </a>
+          <p class="footer-about">A refined sanctuary where Straits heritage meets contemporary luxury.</p>
+        </div>
+        <div>
+          <h5>Explore</h5>
+          <ul>
+            <li><a href="#rooms">Rooms &amp; Suites</a></li>
+            <li><a href="#dining">Dining</a></li>
+            <li><a href="#experiences">Experiences</a></li>
+            <li><a href="#offers">Offers</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Contact</h5>
+          <ul>
+            <li>Singapore</li>
+            <li><a href="tel:+6560000000">+65 6000 0000</a></li>
+            <li><a href="mailto:reservations@straitsmuse.com">reservations@straitsmuse.com</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Muse Letters</h5>
+          <p>Private offers and stories from Singapore, delivered occasionally.</p>
+          <form class="newsletter" id="newsletter">
+            <input type="email" placeholder="Your email address" aria-label="Email address" required />
+            <button type="submit">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> Straits Muse Hotel. All rights reserved.</span>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" /></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8Z" /></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7" /></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       ELEVENLABS CONVERSATIONAL AI WIDGET
+       Paste your ElevenLabs embed code here. It floats in the bottom-right
+       corner by default; the page keeps that corner clear for it.
+       Example (replace YOUR_AGENT_ID):
+
+       <elevenlabs-convai agent-id="YOUR_AGENT_ID"></elevenlabs-convai>
+       <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+       ===================================================================== -->
+
+  <script>
+    (function () {
+      var header = document.getElementById('header');
+      var toggle = document.getElementById('menuToggle');
+      var nav = document.getElementById('nav');
+
+      // Header background on scroll
+      function onScroll() { header.classList.toggle('scrolled', window.scrollY > 40); }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // Mobile menu
+      toggle.addEventListener('click', function () {
+        var open = document.body.classList.toggle('menu-open');
+        toggle.setAttribute('aria-expanded', open);
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      });
+      nav.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          document.body.classList.remove('menu-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      // Reveal on scroll
+      var els = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        els.forEach(function (el) { io.observe(el); });
+      } else {
+        els.forEach(function (el) { el.classList.add('in'); });
+      }
+
+      // Booking dates: default to tomorrow → +2 nights
+      function iso(d) { return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10); }
+      var checkin = document.getElementById('checkin');
+      var checkout = document.getElementById('checkout');
+      var today = new Date();
+      var tomorrow = new Date(today); tomorrow.setDate(today.getDate() + 1);
+      var later = new Date(today); later.setDate(today.getDate() + 3);
+      checkin.min = iso(today); checkin.value = iso(tomorrow);
+      checkout.min = iso(tomorrow); checkout.value = iso(later);
+      checkin.addEventListener('change', function () {
+        var d = new Date(checkin.value); d.setDate(d.getDate() + 1);
+        checkout.min = iso(d);
+        if (checkout.value <= checkin.value) checkout.value = iso(d);
+      });
+
+      // Pre-select room from "Book" links
+      document.querySelectorAll('[data-room]').forEach(function (a) {
+        a.addEventListener('click', function () { document.getElementById('roomType').value = a.dataset.room; });
+      });
+
+      // Booking submit (front-end only — connect to your booking engine)
+      var note = document.getElementById('bookingNote');
+      document.getElementById('bookingForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!checkin.value || !checkout.value || checkout.value <= checkin.value) {
+          note.className = 'booking-note';
+          note.textContent = 'Please choose a departure date after your arrival date.';
+          return;
+        }
+        var nights = Math.round((new Date(checkout.value) - new Date(checkin.value)) / 86400000);
+        note.className = 'booking-note success';
+        note.textContent = 'Thank you. We are checking availability for the ' + document.getElementById('roomType').value +
+          ' (' + nights + ' night' + (nights > 1 ? 's' : '') + '). Our reservations team will be in touch shortly — or tap the call button to speak with our concierge now.';
+      });
+
+      // Newsletter
+      document.getElementById('newsletter').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var input = this.querySelector('input');
+        if (!input.checkValidity()) { input.reportValidity(); return; }
+        input.value = '';
+        input.placeholder = 'Thank you — welcome to Muse Letters.';
+      });
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
